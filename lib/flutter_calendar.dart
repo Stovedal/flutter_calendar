@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:tuple/tuple.dart';
-import 'package:flutter_calendar/calendar_tile.dart';
+import 'package:lingon_app/flutter_calendar/lib/calendar_tile.dart';
 import 'package:date_utils/date_utils.dart';
 
 typedef DayBuilder(BuildContext context, DateTime day);
@@ -101,7 +101,7 @@ class _CalendarState extends State<Calendar> {
         new Text(
           displayMonth,
           style: new TextStyle(
-            fontSize: 20.0,
+            fontSize: 15.0,
           ),
         ),
         rightInnerIcon ?? new Container(),
@@ -182,7 +182,6 @@ class _CalendarState extends State<Calendar> {
   TextStyle configureDateStyle(monthStarted, monthEnded) {
     TextStyle dateStyles;
     final TextStyle body1Style = Theme.of(context).textTheme.body1;
-
     if (isExpanded) {
       final TextStyle body1StyleDisabled = body1Style.copyWith(
         color: Color.fromARGB(
@@ -205,9 +204,9 @@ class _CalendarState extends State<Calendar> {
   Widget get expansionButtonRow {
     if (widget.isExpandable) {
       return new Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          new Text(Utils.fullDayFormat(selectedDate)),
           new IconButton(
             iconSize: 20.0,
             padding: new EdgeInsets.all(0.0),
@@ -226,6 +225,14 @@ class _CalendarState extends State<Calendar> {
   @override
   Widget build(BuildContext context) {
     return new Container(
+      padding: EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
+      decoration: new BoxDecoration(
+          color: Colors.white,
+          boxShadow: [new BoxShadow(
+            color: Colors.black38,
+            blurRadius: 4.0,
+          ),]
+        ),
       child: new Column(
         mainAxisAlignment: MainAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
